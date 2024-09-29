@@ -1,0 +1,66 @@
+<%- include("partials/header.ejs") %>
+
+  <div class="main">
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary height sidebar"
+      style="width: 280px;height: 100vh;">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <span class="fs-4">Sidebar</span>
+      </a>
+      <hr>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a href="/" class="nav-link">Home</a>
+        </li>
+        <li>
+          <a href="/posts" class="nav-link active">Posts</a>
+        </li>
+        <li>
+          <a href="/about" class="nav-link">About</a>
+        </li>
+      </ul>
+      <hr>
+      <div class="dropdown">
+        <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+          <strong>Bks</strong>
+        </a>
+        <ul class="dropdown-menu text-small shadow">
+          <li><a class="dropdown-item" href="#">New project...</a></li>
+          <li><a class="dropdown-item" href="#">Settings</a></li>
+          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" href="#">Sign out</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <h1>Blog Posts</h1>
+      <div class="row">
+        <% posts.forEach(post=> { %>
+          <div class="col-md-4 mb-4">
+            <div class="card card-hover">
+              <!-- Display the uploaded image -->
+              <img src="/uploads/<%= post.image %>" alt="Uploaded Image" class="card-img-top"
+                style="height: 200px; object-fit: cover;">
+
+              <div class="card-body">
+                <h2 class="card-title">
+                  <%= post.username %>
+                </h2>
+                <p class="card-text">
+                  <%= post.description %>
+                </p> <!-- Display the post description -->
+                <a href="#" class="btn btn-primary btn-hover">Read more</a>
+              </div>
+            </div>
+          </div>
+          <% }); %>
+      </div>
+    </div>
+  </div>
+
+  <%- include("partials/footer.ejs") %>
